@@ -14,8 +14,8 @@ export default class Game extends Phaser.Scene {
 
   create() {
     //this.add.image(0,0,'background').setOrigin(0,0);
-    this.matter.world.setBounds();
-    let wall1 = new Wall (this, 0,600, 'wall', 700, 100);
+   
+    //let wall1 = new Wall (this, 0,600, 'wall', 700, 100);
     let ball = new Ball(this, 700, 0, 'ball');
 
     let wall2 = new Wall (this, 500,200, 'wall', 500,50);
@@ -23,9 +23,14 @@ export default class Game extends Phaser.Scene {
     const c1 = this.matter.world.nextCategory();
     const c2 = this.matter.world.nextCategory();
 
-    console.log(this);
+    this.object =  this.matter.world.setBounds();
+    console.log(this.object);
 
-    wall2.setCollidesWith([c1, this.matter.world.walls]);
+    console.log(this.matter.world.walls);
+
+    //this.matter.world.walls.bottom.setCollisionCategory(c1);
+
+    wall2.setCollidesWith([c1, 1]);
 
     wall1.setCollisionCategory(c1);
     ball.setCollisionCategory(c2);

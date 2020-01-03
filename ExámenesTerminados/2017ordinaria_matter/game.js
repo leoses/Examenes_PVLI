@@ -34,7 +34,8 @@ export default class Game extends Phaser.Scene {
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
       console.log(event.pairs[0].bodyA.gameObject);
 
-      if(event.pairs[0].bodyB.gameObject !== null  && event.pairs[0].bodyA.gameObject !== null && event.pairs[0].bodyB.gameObject.texture.key === 'player' && event.pairs[0].bodyA.gameObject.texture.key === 'player'){
+      if(event.pairs[0].bodyB.gameObject !== null  && event.pairs[0].bodyA.gameObject !== null
+         && event.pairs[0].bodyB.gameObject.texture.key === 'player' && event.pairs[0].bodyA.gameObject.texture.key === 'player'){
         bodyA.gameObject.collision();
         bodyB.gameObject.collision();
       }
