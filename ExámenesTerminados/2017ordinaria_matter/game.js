@@ -27,8 +27,8 @@ export default class Game extends Phaser.Scene {
     });
 
 
-    let player1 = new Player(this, 300, 0, 'player', this.cursors1, 10, 'p1');
-    let player2 = new Player(this, 800, 0, 'player', this.cursors2, 5, 'p2');
+    let player1 = new Player(this, 300, 0, 'player', this.cursors1, 10, 'Player_1: ',200);
+    let player2 = new Player(this, 800, 0, 'player', this.cursors2, 5, 'Player_2: ', 900);
 
 
     this.matter.world.on('collisionstart', function (event, bodyA, bodyB) {
@@ -39,7 +39,10 @@ export default class Game extends Phaser.Scene {
         bodyB.gameObject.collision();
       }
     });
-
+/*
+    this.Player1Lives = this.add.text(200, this.cameras.main.y + 10, 'Player_1: ' + player1.lives, { fontFamily: 'Arial', fontSize: 45, color: '#ffffff ' });
+    this.Player2Lives = this.add.text(900, this.cameras.main.y + 10, 'Player_2: ' + player2.lives, { fontFamily: 'Arial', fontSize: 45, color: '#ffffff ' });
+*/
   }
 
   update(time, delta) {    

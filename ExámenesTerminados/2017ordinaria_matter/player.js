@@ -1,5 +1,5 @@
 export default class Player extends Phaser.Physics.Matter.Sprite{
-    constructor(scene, x, y, sprite, cursors, lives) {
+    constructor(scene, x, y, sprite, cursors, lives, id, textposition) {
         super(scene.matter.world, x, y, sprite,null,{label: 'player'});
         console.log(this);
         scene.add.existing(this);
@@ -9,6 +9,9 @@ export default class Player extends Phaser.Physics.Matter.Sprite{
         this.speedYOffset = 1;
         this.scene = scene;
         this.lives = lives;
+        this.id=id;
+        this.liveText = scene.add.text(textposition, scene.cameras.main.y + 10, id + this.lives, { fontFamily: 'Arial', fontSize: 45, color: '#ffffff ' });
+        
         this.setBody({
             type: 'rectangle',
             width: this.originalSize,
@@ -35,7 +38,12 @@ export default class Player extends Phaser.Physics.Matter.Sprite{
 
     collision(){
         this.lives--;
-        console.log(this.lives);
+        if(this.lives >= 0){
+        this.liveText.setText(this.id + this.lives);
+        console.log(this.lives);}
+        else{
+            console.log('Nueva escena');
+        }
     }
 
 }
